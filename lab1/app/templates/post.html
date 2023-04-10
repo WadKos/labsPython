@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<h5>{{post.author}}, {{post.date.strftime('%d.%m.%Y')}}</h5>
+<div class="d-flex justify-content-center my-5">
+    <img class="card-img-top w-75" src="{{ url_for('static', filename='images/' + post.image_id) }}"
+        alt="Card image cap">
+</div>
+<div class="d-flex align-items-center justify-content-center w-75 mx-auto">
+    {{post.text}}
+</div>
+<div class="post__comment-input container border rounded-2 my-4 w-75">
+    <div class="row justify-content-start mb-4 bg-light">
+        <div class="col-12 border-bottom py-2 ps-3">
+            Оставьте комментарий
+        </div>
+    </div>
+    <div class="row px-2 pb-3 ">
+        <div class="input-group col-12 mb-3">
+            <textarea class="form-control" style="height: 100px"></textarea>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary">Отправить</button>
+        </div>
+    </div>
+</div>
+<div class="d-flex flex-column align-items-center justify-content-center w-75 mx-auto">
+    {% for comment in post.comments %}
+        <div class="d-flex">
+            <div class="flex-shrink-0">
+                <img src="{{ url_for('static', filename='images/avatar.jpg') }}" class="rounded-circle avatar"
+                    alt="Sample Image">
+            </div>
+            <div class="flex-grow-1 ms-3">
+                <h5>{{ comment.author }}</h5>
+                <p>{{ comment.text }}</p>
+
+                {% for reply in comment.replies %}
+                    <div class="d-flex mt-4">
+                        <div class="flex-shrink-0">
+                            <img src="{{ url_for('static', filename='images/avatar.jpg') }}" class="rounded-circle avatar" alt="Sample Image">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5>{{ reply.author }}</h5>
+                            <p>{{ reply.text }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -42,7 +42,7 @@ def index():
 def posts():
     return render_template('posts.html', title='Посты', posts=posts_list)
 
-@app.route('/posts/<int:index>')
+@app.route('/posts/<int:index>')    
 def post(index):
     p = posts_list[index]
     return render_template('post.html', title=p['title'], post=p)
