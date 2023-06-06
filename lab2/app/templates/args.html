@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Название
+                </th>
+                <th>
+                    Значение
+                </th>
+            </tr>        
+        </thead>
+        <tbody>
+            {% for arg_name, arg_value in request.args.items() %}
+            <tr>    
+                <td>
+                    {{arg_name}}
+                </td>
+                <td>
+                    {{arg_value}}
+                </td>
+                    
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

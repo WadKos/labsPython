@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Название
+                </th>
+                <th>
+                    Значение
+                </th>
+            </tr>        
+        </thead>
+        <tbody>
+            {% for cookie_name, cookie_name in request.cookies.items() %}
+            <tr>    
+                <td>
+                    {{cookie_name}}
+                </td>
+                <td>
+                    {{cookie_name}}
+                </td>
+                    
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

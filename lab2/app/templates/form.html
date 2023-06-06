@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <form method="POST">
+        <div class = "mb-3">
+            <label for="subject" class="form-label">Тема</label>
+            <input type="text" name="subject" id="subject" class="form-control" value="{{ request.form['subject'] }}">
+        </div>
+        <div class = "mb-3">
+            <label for="msg" class="form-label">Сообщение</label>
+            <textarea name="msg" id="msg" cols="30" rows="10" class="form-control">{{ request.form['msg'] }}</textarea>
+        </div>
+        <button class="btn btn-primary mb-3">Отправить</button>
+    </form>
+</div>
+
+{% if request.method == 'POST' %}
+<table class="table">
+    <tbody>
+        <tr>    
+            <td>
+                Тема:
+            </td>
+            <td>
+                {{ request.form['subject'] }}
+            </td>
+        </tr>
+        <tr>    
+            <td>
+                Сообщение:
+            </td>
+            <td>
+                {{ request.form['msg'] }}
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+
+
+{% endblock %}

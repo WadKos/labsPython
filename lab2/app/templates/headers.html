@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Название
+                </th>
+                <th>
+                    Значение
+                </th>
+            </tr>        
+        </thead>
+        <tbody>
+            {% for header_name, header_value in request.headers %}
+            <tr>    
+                <td>
+                    {{header_name}}
+                </td>
+                <td>
+                    {{header_value}}
+                </td>
+                    
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
